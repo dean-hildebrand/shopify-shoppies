@@ -8,6 +8,7 @@ function MovieList(props) {
         <div className="movie" key={index}>
           <h2>{movie.Title}</h2>
           <img src={movie.Poster} alt={movie.Title} />
+          <button>Nominate</button>
         </div>
       ))}
     </div>
