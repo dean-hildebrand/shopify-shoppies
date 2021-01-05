@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import MovieList from "./components/MovieList";
-// import axios from "./axios";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -71,6 +70,21 @@ function App() {
         "https://m.media-amazon.com/images/M/MV5BMDljNTQ5ODItZmQwMy00M2ExLTljOTQtZTVjNGE2NTg0NGIxXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_SX300.jpg",
     },
   ]);
+
+  //getting the search response with url
+  const getMovieRequest = async () => {
+    //request
+    const url = "http://www.omdbapi.com/?s=star wars&apikey=369f95e3";
+
+    const response = await fetch(url);
+    const responseJson = await response.json();
+    console.log(responseJson);
+  };
+
+  useEffect(() => {
+    getMovieRequest();
+  }, []);
+
   return (
     <div className="app">
       <MovieList movies={movies} />

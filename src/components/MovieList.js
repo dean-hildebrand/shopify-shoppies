@@ -5,7 +5,7 @@ function MovieList(props) {
   return (
     <div className="movie-list">
       {props.movies.map((movie, index) => (
-        <div className='movie'>
+        <div className="movie" key={index}>
           <h2>{movie.Title}</h2>
           <img src={movie.Poster} alt={movie.Title} />
         </div>
