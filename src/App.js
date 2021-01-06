@@ -8,6 +8,7 @@ import Search from "./components/Search";
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [nominatedMovie, setNominatedMovie] = useState([]);
 
   //getting the search response with url
   const getMovieRequest = async (searchValue) => {
@@ -26,12 +27,18 @@ function App() {
     getMovieRequest(searchValue);
   }, [searchValue]);
 
+  //nominating a movie
+  const nominateMovie = (movie) => {
+    const nominated = [...nominatedMovie, movie];
+    setNominatedMovie(nominated);
+  };
+
   return (
     <div className="app">
       <Header heading="Shoppies" />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
 
-      <MovieList movies={movies} />
+      <MovieList movies={movies} handleNominatedClick={nominateMovie} />
     </div>
   );
 }
