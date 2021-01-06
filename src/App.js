@@ -37,8 +37,14 @@ function App() {
     <div className="app">
       <Header heading="Shoppies" />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      <div className="movie-search-list">
+        <MovieList movies={movies} handleNominatedClick={nominateMovie} />
+      </div>
+      <div className="nominate-movies-list">
+        <Header heading="Nominated Movies" />
+      </div>
+      <MovieList movies={nominatedMovie} handleNominatedClick={nominateMovie} />
 
-      <MovieList movies={movies} handleNominatedClick={nominateMovie} />
     </div>
   );
 }
