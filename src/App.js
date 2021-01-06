@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import MovieList from "./components/MovieList";
 // import Navbar from "./components/Navbar";
-import Header from "./components/Header";
+import Heading from "./components/Heading";
 import Search from "./components/Search";
 
 function App() {
@@ -33,18 +33,30 @@ function App() {
     setNominatedMovie(nominated);
   };
 
+  const removeNominated = (movie) => {
+    debugger
+    const newNominatedList = nominatedMovie.filter(
+      (nominatedMovie) => nominatedMovie.imdbID != movie.imdbID
+    );
+    setNominatedMovie(newNominatedList);
+  };
+
   return (
     <div className="app">
-      <Header heading="Shoppies" />
+      <Heading heading="Shoppies" />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <div className="movie-search-list">
         <MovieList movies={movies} handleNominatedClick={nominateMovie} />
       </div>
-      <div className="nominate-movies-list">
-        <Header heading="Nominated Movies" />
+      <div className="nominate-heading">
+        <Heading heading="Nominated Movies" />
       </div>
-      <MovieList movies={nominatedMovie} handleNominatedClick={nominateMovie} />
-
+      <div className="nominated-movie-list">
+        <MovieList
+          movies={nominatedMovie}
+          handleNominatedClick={removeNominated}
+        />
+      </div>
     </div>
   );
 }

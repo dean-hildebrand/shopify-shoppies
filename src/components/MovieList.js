@@ -4,6 +4,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { Button } from "@material-ui/core";
 
 function MovieList(props) {
+  console.log("movie list props:", props);
   return (
     <div className="movie-list">
       {props.movies.map((movie, index) => (
