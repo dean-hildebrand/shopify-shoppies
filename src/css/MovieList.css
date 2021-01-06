@@ -4,6 +4,13 @@ align-items: center;
 overflow-y: hidden;
 overflow-x: scroll;
 padding: 30px;
+}
+
+.movie-img {
+    object-fit: contain;
+    margin: 10px;
+    height: 300px;
+    width: auto;
 
 }
 
@@ -16,4 +23,26 @@ transition: transform 450ms;
 
 .movie:hover {
 transform: scale(1.08);
+}
+
+.movie-list .overlay {
+    opacity: 1;
+}
+
+.overlay {
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s;
+    cursor: pointer; */
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    width: 100%;
+    transition: 0.5s ease;
+    opacity: 0;
+    bottom: 0;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
 }
