@@ -1,27 +1,21 @@
 import React from "react";
 import "../css/MovieList.css";
-import AddIcon from "@material-ui/icons/Add";
-import { Button } from "@material-ui/core";
 
 function MovieList(props) {
-  console.log("movie list props:", props);
+  const NominatedComponent = props.nominatedComponent;
   return (
-    <div className="movie-list">
+    <div className="movie-list-container">
       {props.movies.map((movie, index) => (
         <div className="movie" key={index}>
           <h2>{movie.Title}</h2>
-          <p>Released in: {movie.Year}</p>
-          <img className="movie-img" src={movie.Poster} alt={movie.Title} />
+          <p className="movie-year">{movie.Year}</p>
 
-          <div className="nominate-btn">
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => props.handleNominatedClick(movie)}
-            >
-              Nominate
-              <AddIcon />
-            </Button>
+          <img className="movie-img" src={movie.Poster} alt={movie.Title} />
+          <div
+            className="overlay"
+            onClick={() => props.handleNominatedClick(movie)}
+          >
+            <NominatedComponent />
           </div>
         </div>
       ))}
