@@ -6,6 +6,8 @@ import Heading from "./components/Heading";
 import Search from "./components/Search";
 import AddNominated from "./components/AddNominated";
 import RemoveNominated from "./components/RemoveNominated";
+import swal from 'sweetalert';
+
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -31,15 +33,16 @@ function App() {
 
   //nominating a movie
   const nominateMovie = (movie) => {
+    //checks the id to make sure one one of each movie is nominated
     if (nominatedMovie.includes(movie)) {
-      return nominatedMovie && alert("Already Nominated");
+      return nominatedMovie && swal("Already Nominated");
     }
-
+    //checks to see that only 5 movies can be nominated
     if (nominatedMovie.length <= 4) {
       const nominated = [...nominatedMovie, movie];
       setNominatedMovie(nominated);
     } else {
-      alert("You can only nominate 5 movies, sorry");
+      swal("You can only nominate 5 movies, sorry");
     }
   };
 
@@ -53,7 +56,7 @@ function App() {
 
   return (
     <div className="app">
-      <Heading heading="Shoppies" />
+      <Heading heading="Shopify-Shoppies" />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <div className="movie-search-list">
         <div className="row">
